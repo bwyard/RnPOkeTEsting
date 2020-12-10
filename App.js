@@ -1,21 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext } from "react";
+import './App.css'
+import { PokemonContext, PokemonProvider } from "./PokemonContext";
+import CapturedPokemons from "./src/components/CapturedPokemons";
+import PokemonsList from "./src/components/PokemonsList";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => (
+  <div className='App'>
+    <PokemonProvider>
+      <div className="App">
+        <PokemonsList />
+        <CapturedPokemons />
+      </div>
+    </PokemonProvider>
+  </div>
+)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
