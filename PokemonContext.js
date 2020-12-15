@@ -5,17 +5,13 @@ export const PokemonContext = createContext();
 
 export const PokemonProvider = (props) => {
     const defaultState = {
-        pokemons: [
-          { id: 1, name: 'Bulbasaur' },
-          { id: 2, name: 'Charmander' },
-          { id: 3, name: 'Squirtle' }
-        ],
+        pokemons: [],
         capturedPokemons: []
       };
 
     const [state, dispatch] =  useReducer(pokemonReducer, defaultState)
     
-    const { pokemons, capturedPokemons}= state
+    const { capturedPokemons}= state
 
     const capture = (pokemon) => () => {
         dispatch({ type: 'CAPTURE', pokemon });
@@ -24,14 +20,24 @@ export const PokemonProvider = (props) => {
     const release = (pokemon) => () => {
         dispatch({ type: 'RELEASE', pokemon });
     };
+    
+    const addPokemon = (pokemon) => {
+        dispatch({type: 'ADD_POKEMON', pokemon})
+    }
+
+    const addPokemons = (pokemons) => {
+        dispatch({ type: 'ADD_POKEMONS', pokemons });
+    };
 
     
 
     const providerValue = {
-        pokemons,
+        state,
         capturedPokemons,
         release,
-        capture
+        capture,
+        addPokemon,
+        addPokemons
     }
 
     return (
