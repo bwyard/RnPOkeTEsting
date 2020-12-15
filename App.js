@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import './App.css'
 import { PokemonContext, PokemonProvider } from "./PokemonContext";
 import CapturedPokemons from "./src/components/CapturedPokemons";
+import PokemonForm from "./src/components/PokemonForm";
 import PokemonsList from "./src/components/PokemonsList";
 
 const App = () => (
@@ -11,6 +12,7 @@ const App = () => (
         <PokemonsList />
         <CapturedPokemons />
       </div>
+      <PokemonForm />
     </PokemonProvider>
   </div>
 )
