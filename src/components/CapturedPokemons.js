@@ -9,8 +9,8 @@ const CapturedPokemons = () => {
 
             {capturedPokemons.map((pokemon) =>
             <div key = {`${pokemon.id}-${pokemon.name}`}>
-                <span>{pokemon.name}</span>
-                <button onClick={release(pokemon)}>-</button>
+                <span>{pokemon.name.toUpperCase().substr(0,1).concat(pokemon.name.substr(1))}</span>
+                <button onClick={release(pokemon)}>Release</button>
             </div>)}
         </div>
     )
